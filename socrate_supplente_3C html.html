@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Socrate Supplente – Classe 3C</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #f5f3ff;
+  background-image:
+    radial-gradient(ellipse at 10% 0%, #ddd6fe 0%, transparent 45%),
+    radial-gradient(ellipse at 90% 10%, #c4b5fd 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 100%, #fce7f3 0%, transparent 50%);
+  min-height: 100vh;
+  font-family: 'Crimson Text', serif;
+  color: #1a0a2a;
+  padding: 0 0 80px;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border: 12px solid transparent;
+  border-image: repeating-linear-gradient(
+    45deg,
+    #7c3aed 0px, #7c3aed 4px,
+    #c4b5fd 4px, #c4b5fd 8px,
+    #7c3aed 8px, #7c3aed 12px
+  ) 12;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.hero { text-align: center; padding: 50px 24px 30px; }
+.hero::before {
+  content: ''; display: block; width: 200px; height: 3px;
+  background: linear-gradient(to right, transparent, #7c3aed, transparent);
+  margin: 0 auto 28px;
+}
+.hero::after {
+  content: ''; display: block; width: 200px; height: 3px;
+  background: linear-gradient(to right, transparent, #7c3aed, transparent);
+  margin: 28px auto 0;
+}
+
+.scene-wrap { display: flex; justify-content: center; margin-bottom: 20px; }
+
+.hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(22px, 5vw, 38px);
+  font-weight: 700;
+  color: #5b21b6;
+  letter-spacing: 2px;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.hero-sub { font-style: italic; font-size: 17px; color: #7c3aed; margin-bottom: 20px; }
+.class-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff;
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  letter-spacing: 3px;
+  padding: 7px 28px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.3);
+}
+
+.citazione {
+  max-width: 560px; margin: 30px auto; padding: 0 24px; text-align: center;
+}
+.citazione-testo { font-size: 20px; font-style: italic; color: #5b21b6; line-height: 1.6; }
+.citazione-greco { font-size: 13px; color: #a78bfa; margin-top: 6px; letter-spacing: 2px; font-family: 'Cinzel', serif; }
+
+.descrizione {
+  max-width: 580px; margin: 0 auto 40px; padding: 20px 28px;
+  background: rgba(124,58,237,0.06); border: 1px solid rgba(124,58,237,0.2);
+  border-radius: 4px; font-size: 16px; line-height: 1.8;
+  color: #3b0764; text-align: center; font-style: italic;
+  margin-left: 24px; margin-right: 24px; position: relative;
+}
+@media(min-width:628px){ .descrizione { margin-left: auto; margin-right: auto; } }
+.descrizione::before { content: '❧'; position: absolute; top: 8px; left: 12px; color: #7c3aed; font-size: 18px; }
+.descrizione::after  { content: '❧'; position: absolute; bottom: 8px; right: 12px; color: #7c3aed; font-size: 18px; }
+
+.section-header {
+  max-width: 580px; margin: 0 auto 20px; padding: 0 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-line { flex: 1; height: 1.5px; background: linear-gradient(to right, #7c3aed, transparent); }
+.section-line.right { background: linear-gradient(to left, #7c3aed, transparent); }
+.section-label {
+  font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 3px;
+  color: #7c3aed; text-transform: uppercase; white-space: nowrap;
+}
+
+.links {
+  max-width: 580px; margin: 0 auto; padding: 0 24px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+.link-card {
+  display: flex; align-items: center; gap: 20px;
+  background: #fff; border: 1.5px solid rgba(124,58,237,0.2);
+  border-radius: 12px; padding: 20px 24px;
+  box-shadow: 0 2px 14px rgba(124,58,237,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: fadeUp 0.4s ease both;
+}
+.link-card:nth-child(1){ animation-delay: 0.05s; }
+.link-card:nth-child(2){ animation-delay: 0.12s; }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(12px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.link-card:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(124,58,237,0.15); }
+.link-icon { font-size: 36px; flex-shrink: 0; }
+.link-content { flex: 1; }
+.link-title { font-family: 'Cinzel', serif; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; color: #5b21b6; margin-bottom: 4px; }
+.link-desc { font-size: 14px; color: #78716c; font-style: italic; margin-bottom: 8px; }
+.link-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #7c3aed, #a78bfa);
+  color: #fff; font-family: 'Cinzel', serif; font-size: 11px;
+  letter-spacing: 2px; padding: 6px 18px; border-radius: 20px;
+  text-decoration: none; text-transform: uppercase; transition: opacity 0.2s;
+}
+.link-btn:hover { opacity: 0.85; }
+.link-btn.empty { background: #e5e7eb; color: #9ca3af; cursor: default; pointer-events: none; }
+
+.footer { text-align: center; padding: 50px 24px 0; max-width: 580px; margin: 0 auto; }
+.footer-ornament { font-size: 24px; color: #7c3aed; letter-spacing: 8px; margin-bottom: 10px; }
+.footer-text { font-style: italic; font-size: 13px; color: #7c3aed; opacity: 0.6; }
+
+/* ANIMAZIONI SVG */
+@keyframes talk { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+@keyframes blink { 0%,90%,100%{transform:scaleY(1)} 95%{transform:scaleY(0.1)} }
+@keyframes wobble { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-4px)} }
+
+@keyframes pop { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+@keyframes shake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-8deg)} 75%{transform:rotate(8deg)} }
+
+.arm-anim { transform-origin: 110px 140px; animation: talk 0.8s ease-in-out infinite; }
+.eye-l { transform-origin: 86px 72px; animation: blink 3s ease-in-out infinite; }
+.eye-r { transform-origin: 98px 72px; animation: blink 3s ease-in-out infinite; }
+.q1 { transform-origin: 200px 50px; animation: wobble 1.2s ease-in-out infinite; }
+.q2 { transform-origin: 260px 60px; animation: wobble 1.2s 0.4s ease-in-out infinite; }
+.q3 { transform-origin: 230px 30px; animation: pop 1.5s 0.2s ease-in-out infinite; }
+.eyebrow-l { transform-origin: 175px 100px; animation: shake 1s ease-in-out infinite; }
+.eyebrow-r { transform-origin: 205px 100px; animation: shake 1s 0.2s ease-in-out infinite; }
+
+
+@media(max-width:500px){
+  .link-card { flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="scene-wrap">
+  <svg width="360" height="230" viewBox="0 0 360 230" xmlns="http://www.w3.org/2000/svg">
+
+    <!-- LAVAGNA -->
+    <rect x="10" y="10" width="155" height="110" rx="4" fill="#1e1b4b" stroke="#7c3aed" stroke-width="2"/>
+    <rect x="15" y="15" width="145" height="100" rx="2" fill="#1e1b4b"/>
+    <rect x="10" y="118" width="155" height="7" rx="2" fill="#5b21b6"/>
+    <!-- Testo lavagna -->
+    <text x="87" y="45" text-anchor="middle" font-family="serif" font-size="11" fill="#c4b5fd" font-style="italic">γνῶθι σεαυτόν</text>
+    <text x="87" y="60" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#a78bfa">conosci te stesso</text>
+    <text x="87" y="95" text-anchor="middle" font-family="serif" font-size="32" fill="#7c3aed" opacity="0.6">?</text>
+    <!-- Gessetto -->
+    <rect x="148" y="115" width="14" height="5" rx="2" fill="#e5e7eb" transform="rotate(-8 148 115)"/>
+
+    <!-- SOCRATE -->
+    <!-- Toga -->
+    <ellipse cx="92" cy="168" rx="22" ry="36" fill="#ddd6fe"/>
+    <path d="M72 148 Q92 143 112 148 Q107 178 92 192 Q77 178 72 148Z" fill="#c4b5fd"/>
+    <line x1="72" y1="156" x2="92" y2="153" stroke="#a78bfa" stroke-width="1.5"/>
+    <line x1="92" y1="153" x2="112" y2="156" stroke="#a78bfa" stroke-width="1.5"/>
+    <!-- Sandali -->
+    <ellipse cx="82" cy="195" rx="9" ry="4" fill="#92400e"/>
+    <ellipse cx="102" cy="195" rx="9" ry="4" fill="#92400e"/>
+    <!-- Testa -->
+    <circle cx="92" cy="110" r="18" fill="#fde68a"/>
+    <!-- Barba -->
+    <ellipse cx="92" cy="122" rx="13" ry="9" fill="#d1d5db"/>
+    <path d="M82 117 Q92 128 102 117" fill="#9ca3af"/>
+    <!-- Corona d'alloro animata -->
+    <g>
+      <path d="M74 108 Q76 98 92 96 Q108 98 110 108" stroke="#65a30d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <circle cx="75" cy="106" r="3" fill="#65a30d"/>
+      <circle cx="83" cy="98" r="3" fill="#65a30d"/>
+      <circle cx="92" cy="96" r="3" fill="#65a30d"/>
+      <circle cx="101" cy="98" r="3" fill="#65a30d"/>
+      <circle cx="109" cy="106" r="3" fill="#65a30d"/>
+    </g>
+    <!-- Occhi spalancati -->
+    <g class="eye-l"><ellipse cx="86" cy="107" rx="4" ry="5" fill="white"/><circle cx="86" cy="107" r="2.5" fill="#1e1b4b"/><circle cx="87" cy="106" r="0.8" fill="white"/></g>
+    <g class="eye-r"><ellipse cx="98" cy="107" rx="4" ry="5" fill="white"/><circle cx="98" cy="107" r="2.5" fill="#1e1b4b"/><circle cx="99" cy="106" r="0.8" fill="white"/></g>
+    <!-- Sopracciglia in su (sorpresa) -->
+    <path d="M82 100 Q86 96 90 100" stroke="#78716c" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M94 100 Q98 96 102 100" stroke="#78716c" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- Bocca parlante -->
+    <ellipse cx="92" cy="118" rx="5" ry="3" fill="#c4793a"/>
+    <!-- Braccio gesticolante -->
+    <g class="arm-anim">
+      <line x1="110" y1="155" x2="130" y2="125" stroke="#fde68a" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="131" cy="123" r="5" fill="#fde68a"/>
+    </g>
+
+    <!-- STUDENTE 1 -->
+    <circle cx="195" cy="148" r="14" fill="#fbbf24"/>
+    <!-- occhi spalancati studente 1 -->
+    <g class="eyebrow-l">
+      <ellipse cx="190" cy="144" rx="3" ry="4" fill="white"/>
+      <circle cx="190" cy="144" r="2" fill="#1e1b4b"/>
+      <ellipse cx="200" cy="144" rx="3" ry="4" fill="white"/>
+      <circle cx="200" cy="144" r="2" fill="#1e1b4b"/>
+      <!-- sopracciglia alzate -->
+      <path d="M187 138 Q190 134 193 138" stroke="#78716c" stroke-width="1.5" fill="none"/>
+      <path d="M197 138 Q200 134 203 138" stroke="#78716c" stroke-width="1.5" fill="none"/>
+    </g>
+    <!-- bocca O di sorpresa -->
+    <ellipse cx="195" cy="154" rx="4" ry="3" fill="#c4793a"/>
+    <rect x="181" y="162" width="28" height="32" rx="4" fill="#ddd6fe"/>
+    <!-- ?? sopra la testa studente 1 -->
+    <g class="q1">
+      <text x="195" y="128" text-anchor="middle" font-size="16" fill="#7c3aed" font-weight="bold">??</text>
+    </g>
+
+    <!-- STUDENTE 2 -->
+    <circle cx="260" cy="152" r="14" fill="#fca5a5"/>
+    <g class="eyebrow-r">
+      <ellipse cx="255" cy="148" rx="3" ry="4" fill="white"/>
+      <circle cx="255" cy="148" r="2" fill="#1e1b4b"/>
+      <ellipse cx="265" cy="148" rx="3" ry="4" fill="white"/>
+      <circle cx="265" cy="148" r="2" fill="#1e1b4b"/>
+      <path d="M252 142 Q255 138 258 142" stroke="#78716c" stroke-width="1.5" fill="none"/>
+      <path d="M262 142 Q265 138 268 142" stroke="#78716c" stroke-width="1.5" fill="none"/>
+    </g>
+    <ellipse cx="260" cy="158" rx="4" ry="3" fill="#c4793a"/>
+    <rect x="246" y="166" width="28" height="28" rx="4" fill="#fce7f3"/>
+    <g class="q2">
+      <text x="260" y="132" text-anchor="middle" font-size="16" fill="#7c3aed" font-weight="bold">!?</text>
+    </g>
+
+    <!-- PUNTO DI DOMANDA GRANDE che galleggia -->
+    <g class="q3">
+      <text x="230" y="28" text-anchor="middle" font-size="22" fill="#a78bfa" font-weight="bold" opacity="0.7">???</text>
+    </g>
+
+    <!-- STUDENTE 3 - ride a crepapelle -->
+    <circle cx="315" cy="148" r="14" fill="#86efac"/>
+    <!-- occhi chiusi per risata -->
+    <path d="M308 145 Q311 142 314 145" stroke="#1e1b4b" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <path d="M316 145 Q319 142 322 145" stroke="#1e1b4b" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <!-- bocca che ride spalancata -->
+    <path d="M308 152 Q315 162 322 152" fill="#c4793a"/>
+    <path d="M308 152 Q315 162 322 152" stroke="#92400e" stroke-width="1" fill="none"/>
+    <!-- dentini -->
+    <rect x="311" y="152" width="3" height="4" rx="1" fill="white"/>
+    <rect x="315" y="152" width="3" height="4" rx="1" fill="white"/>
+    <rect x="319" y="152" width="3" height="4" rx="1" fill="white"/>
+    <!-- lacrimina di risata -->
+    <ellipse cx="306" cy="148" rx="2" ry="3" fill="#bfdbfe" opacity="0.8"/>
+    <rect x="301" y="162" width="28" height="28" rx="4" fill="#dcfce7"/>
+    <!-- HA HA sopra la testa -->
+    <g style="transform-origin: 315px 128px; animation: wobble 0.6s ease-in-out infinite;">
+      <text x="315" y="128" text-anchor="middle" font-size="13" fill="#16a34a" font-weight="bold">😂</text>
+    </g>
+
+    <!-- Banco -->
+    <rect x="168" y="190" width="155" height="8" rx="3" fill="#92400e" opacity="0.35"/>
+    <line x1="175" y1="198" x2="175" y2="210" stroke="#92400e" stroke-width="2.5" opacity="0.35"/>
+    <line x1="317" y1="198" x2="317" y2="210" stroke="#92400e" stroke-width="2.5" opacity="0.35"/>
+
+  </svg>
+  </div>
+
+  <h1 class="hero-title">Socrate Supplente</h1>
+  <p class="hero-sub">Il filosofo più scomodo d'Atene… in cattedra!</p>
+  <span class="class-badge">Classe 3C · Filosofia</span>
+</div>
+
+<div class="citazione">
+  <div class="citazione-testo">"So di non sapere" — ma voi adesso lo sapete!</div>
+  <div class="citazione-greco">Σωκράτης · Filosofia</div>
+</div>
+
+<div class="descrizione">
+  Socrate si è presentato in classe come supplente e ha creato scompiglio
+  con le sue domande. Ogni studente ha raccontato com'è andata.
+</div>
+
+<div class="section-header">
+  <div class="section-line"></div>
+  <span class="section-label">I materiali della classe</span>
+  <div class="section-line right"></div>
+</div>
+
+<div class="links">
+
+  <div class="link-card">
+    <div class="link-icon">📜</div>
+    <div class="link-content">
+      <div class="link-title">Presentazione di classe</div>
+      <div class="link-desc">La sintesi del progetto presentata da tutta la 3C</div>
+      <a href="link non ancora inserito" class="link-btn empty" target="_blank">Apri →</a>
+    </div>
+  </div>
+
+  <div class="link-card">
+    <div class="link-icon">📚</div>
+    <div class="link-content">
+      <div class="link-title">I lavori individuali</div>
+      <div class="link-desc">Tutti i compiti degli studenti nella cartella condivisa</div>
+      <a href="link non ancora inserito" class="link-btn empty" target="_blank">Sfoglia →</a>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="footer-ornament">✦ ✦ ✦</div>
+  <div class="footer-text">ἓν οἶδα ὅτι οὐδὲν οἶδα</div>
+</div>
+
+</body>
+</html>
