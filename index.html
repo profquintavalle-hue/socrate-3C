@@ -160,6 +160,38 @@ body::before {
   .link-card { flex-direction: column; text-align: center; }
 }
 </style>
+
+<style>
+.studenti-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 580px;
+  margin: 0 auto 40px;
+  padding: 0 24px;
+  justify-content: center;
+}
+.studente-btn {
+  display: inline-block;
+  background: #fff;
+  border: 1.5px solid rgba(124,58,237,0.25);
+  border-radius: 30px;
+  padding: 8px 18px;
+  font-family: 'Crimson Text', serif;
+  font-size: 15px;
+  color: #5b21b6;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 1px 6px rgba(124,58,237,0.08);
+}
+.studente-btn:hover {
+  background: #7c3aed;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(124,58,237,0.25);
+}
+</style>
+
 </head>
 <body>
 
@@ -301,12 +333,40 @@ body::before {
 
 <div class="section-header">
   <div class="section-line"></div>
-  <span class="section-label">I materiali della classe</span>
+  <span class="section-label">I lavori degli studenti</span>
+  <div class="section-line right"></div>
+</div>
+
+<div class="studenti-grid">
+  <a href="https://drive.google.com/file/d/1Ayiap3_uIeUUUCtKzA6CI6f33FIe8WmN/preview" class="studente-btn" target="_blank">Anita</a>
+  <a href="https://drive.google.com/file/d/1_YtlTx5pP40dxkfYxN3QODFGLPdWgQ1L/preview" class="studente-btn" target="_blank">Chiara</a>
+  <a href="https://drive.google.com/file/d/1uKeguhJxmly8U6DgVnOkw8tiA3bI9-2g/preview" class="studente-btn" target="_blank">Giulia D.</a>
+  <a href="https://docs.google.com/document/d/10YKL6JScm5c5yiwkgKz9RHJoK_Ny6edn5-MlWqNs35s/preview" class="studente-btn" target="_blank">M. Valeria</a>
+  <a href="https://drive.google.com/file/d/1UVGPWPJzsVXubnRiKE9IKuX561BQXYWB/preview" class="studente-btn" target="_blank">Emanuele</a>
+  <a href="https://drive.google.com/file/d/1CzbAv52xBzLWrhwzOZVTrToRcKEdTtig/preview" class="studente-btn" target="_blank">Eleonora</a>
+  <a href="https://drive.google.com/file/d/1wh8J6ICJuAFpg5slQtwVKq1fRaJIB0JC/preview" class="studente-btn" target="_blank">Beatrice</a>
+  <a href="https://docs.google.com/document/d/1J-Tj6DOe9osn3VGDx0qBsSJ0EZHZDft9cEwrgAs4ouE/preview" class="studente-btn" target="_blank">Giaime</a>
+  <a href="https://drive.google.com/file/d/1y7XoHU5vtreTsTOx5NJjALQ963Ib0tYe/preview" class="studente-btn" target="_blank">Andrea</a>
+  <a href="https://drive.google.com/file/d/14_a8bu_3qO9FwVwi0hBJBTXRi5LdYV1-/preview" class="studente-btn" target="_blank">Leonardo M.</a>
+  <a href="https://docs.google.com/document/d/1-C1SFnWzrOkDetVzbVwRchZiret3enOvDEV-uLMus8w/preview" class="studente-btn" target="_blank">Federico</a>
+  <a href="https://docs.google.com/document/d/12pRGGhG8vYyPjxMZHRsCm4L3OlBjdcrj0RVQ0q7XUFM/preview" class="studente-btn" target="_blank">Sveva</a>
+  <a href="https://drive.google.com/file/d/1GyVxUgEkXTtA34hbWc90U1fkkUq7Gaj3/preview" class="studente-btn" target="_blank">Piero</a>
+  <a href="https://drive.google.com/file/d/1ldLsf39-hEYO2kKRh3deQgpJ6bNOE1Fv/preview" class="studente-btn" target="_blank">Gaia</a>
+  <a href="https://docs.google.com/document/d/1eA1yR1ZsLhdeFl5dSKtuqtzFDQ3wotdIAaKEzWGBzX8/preview" class="studente-btn" target="_blank">Giulia P.</a>
+  <a href="https://drive.google.com/file/d/1xL6LKlSMn0RS4ROAcaYCG-IapiIiNhNw/preview" class="studente-btn" target="_blank">Giuditta</a>
+  <a href="https://docs.google.com/document/d/1blsfi7eZ2br92xqpTT4vi88L4ARIOLqwCcNXIMmh-Bo/preview" class="studente-btn" target="_blank">Irene</a>
+  <a href="https://docs.google.com/document/d/1TEAuEDqSV1kZaE4rsx5rfptYdPN7aSWr/preview" class="studente-btn" target="_blank">Agnese</a>
+  <a href="https://docs.google.com/document/d/11js5Kpc_sSp8bY7kC-fctn44Ui7vmk0jAhI81rvUMdo/preview" class="studente-btn" target="_blank">Dora</a>
+  <a href="https://drive.google.com/file/d/1SrHaziloMElV4Hj-cRy4QR-bLJEY_kjr/preview" class="studente-btn" target="_blank">Leonardo V.</a>
+</div>
+
+<div class="section-header" style="margin-bottom:20px;">
+  <div class="section-line"></div>
+  <span class="section-label">Presentazione di classe</span>
   <div class="section-line right"></div>
 </div>
 
 <div class="links">
-
   <div class="link-card">
     <div class="link-icon">📜</div>
     <div class="link-content">
@@ -315,16 +375,6 @@ body::before {
       <a href="https://drive.google.com/file/d/1DovOeicl_RCLbHM661pLfb3zJCj8mUNt/preview" class="link-btn" target="_blank">Apri →</a>
     </div>
   </div>
-
-  <div class="link-card">
-    <div class="link-icon">📚</div>
-    <div class="link-content">
-      <div class="link-title">I lavori individuali</div>
-      <div class="link-desc">Tutti i compiti degli studenti nella cartella condivisa</div>
-      <a href="https://drive.google.com/drive/folders/1F1lB1gmaWyZSulaKMXZv952hQNkpfrVL?usp=sharing" class="link-btn" target="_blank">Sfoglia →</a>
-    </div>
-  </div>
-
 </div>
 
 <div class="footer">
